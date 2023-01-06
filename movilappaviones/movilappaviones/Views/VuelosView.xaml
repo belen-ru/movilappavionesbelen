@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="movilappaviones.Views.VuelosView"
+             Title="Vuelos AeroTEC" x:Name="vueloslista" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ActualizarCommand}" IconImageSource="upd.png"  ></ToolbarItem>
+        <ToolbarItem Command="{Binding VerAgregarVueloCommand}" IconImageSource="agg.png" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+
+
+        <Frame BackgroundColor="DarkOrange" >
+
+
+
+            <CollectionView ItemsSource="{Binding ListaVuelos}"  >
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+
+                        <Frame CornerRadius="10" BackgroundColor="Black">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition  Width="0.45*" />
+                                    <ColumnDefinition  Width="auto" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+
+
+                                </Grid.RowDefinitions>
+
+                                <Label FontSize="18" TextTransform="Uppercase"  HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="White">DESTINATION :</Label>
+                                <Label FontSize="18" TextTransform="Uppercase"  HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Destination}"  Grid.Row="1" TextColor="DarkOrange"></Label>
+                                <Label  TextTransform="Uppercase"   HorizontalOptions="Center" VerticalOptions="Center"  TextColor="White" FontAttributes="Bold" FontSize="18" Grid.Column="1" >FLIGHT :</Label>
+                                <Label FontSize="18" TextTransform="Uppercase"   HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Flight}"  TextColor="DarkOrange" Grid.Row="1" Grid.Column="1"></Label>
+                                <Label  TextTransform="Uppercase"   HorizontalOptions="Center" VerticalOptions="Center"  TextColor="White" FontAttributes="Bold" FontSize="18" Grid.Row="2" >time :</Label>
+                                <Label FontSize="17"  VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="DarkOrange" Grid.Row="3"  Text="{Binding Time}" ></Label>
+                                <Label  TextTransform="Uppercase"   HorizontalOptions="Center" VerticalOptions="Center"  TextColor="White" FontAttributes="Bold" FontSize="18" Grid.Column="1" Grid.Row="2" >gate:</Label>
+                                <Label FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="3"  TextColor="DarkOrange" Grid.Column="1" Text="{Binding Gate}"></Label>
+                                <Label FontSize="20" TextColor="Orange" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2" TextTransform="Uppercase" FontFamily="aero2" Grid.Row="1" Text="{Binding Remarks}" ></Label>
+
+
+                                <Button  FontSize="20" FontAttributes="Bold" Grid.Column="1"  CornerRadius="10" BackgroundColor="OrangeRed" Grid.Row="4" Scale=".7" Command="{Binding Source={x:Reference vueloslista}, Path=BindingContext.VerEditarVueloCommand}" CommandParameter="{Binding .}" Text="Editar"></Button>
+                                <Button FontSize="20" FontAttributes="Bold" Grid.Column="2" CornerRadius="10" Scale=".7" BackgroundColor="red" Grid.Row="4" Command="{Binding Source={x:Reference vueloslista}, Path=BindingContext.CaneclarVueloCommand}" CommandParameter="{Binding .}" Text="Cancelar" ></Button>
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

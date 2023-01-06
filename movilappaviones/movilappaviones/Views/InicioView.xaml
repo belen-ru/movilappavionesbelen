@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:movilappaviones.ViewModels"
+             x:Class="movilappaviones.Views.InicioView" BackgroundColor="Black" NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:VuelosViewModel></vm:VuelosViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+       
+        <Grid >
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+
+
+            </Grid.RowDefinitions>
+
+            <Frame Grid.RowSpan="4"
+       HasShadow="True"
+       
+       HeightRequest="120"
+       WidthRequest="120">
+                <Frame.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="OrangeRed"
+                          Offset="0.1" />
+                        <GradientStop Color="DarkOrange"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+            </Frame>
+
+
+            <Label FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,60,0,80" FontSize="45" FontFamily="aero"  TextColor="Orange">AeroTEC</Label>
+            <Image Grid.Row="2" HeightRequest="300" Source="logo.png"></Image>
+
+
+
+            <StackLayout VerticalOptions="End" Margin="40,50"  Grid.Row="3">
+                <Label VerticalOptions="End" Margin="0,5" FontAttributes="Italic" FontSize="30" TextColor="Black" FontFamily="aero2" HorizontalOptions="Center">Bienvenido a</Label>
+                <Label VerticalOptions="End"  FontAttributes="Italic" FontSize="30" TextColor="Black" FontFamily="aero2" HorizontalOptions="Center">AeroTEC</Label>
+
+            </StackLayout>
+               
+
+            <Frame VerticalOptions="End" Grid.Row="4" Margin="60,50,60,80" Padding="5" BackgroundColor="DarkOrange" CornerRadius="30" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IniciarCommand}" ></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Label Text="Vuelos" Padding="15" FontAttributes="Bold" FontSize="Title" TextColor="White" FontFamily="aero" HorizontalTextAlignment="Center"></Label>
+
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

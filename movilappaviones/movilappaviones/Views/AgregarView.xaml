@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="movilappaviones.Views.AgregarView">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="240"></Setter>
+            <Setter Property="TextTransform" Value="Uppercase"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+
+
+        <Grid BackgroundColor="Black">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Frame Grid.ColumnSpan="2" Grid.RowSpan="5"
+       HasShadow="True"
+       HeightRequest="120"
+       WidthRequest="120">
+                <Frame.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="OrangeRed"
+                          Offset="0.1" />
+                        <GradientStop Color="DarkOrange"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+            </Frame>
+
+            <Label Grid.ColumnSpan="2"  HorizontalOptions="Center" TextColor="Orange" FontSize="45" FontFamily="aero"  VerticalOptions="Center" Margin="0,0,0,40">AeroTEC</Label>
+            <Label Grid.ColumnSpan="2" Grid.Row="1" FontAttributes="None" HorizontalOptions="Center" TextColor="Black" FontSize="Title" FontFamily="aero2" VerticalOptions="Center">Agendar vuelo</Label>
+
+
+
+            <Frame Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" 
+               CornerRadius="10"  BackgroundColor="Black">
+
+
+                <StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontFamily="aero">DESTINATION :</Label>
+                        <Entry Text="{Binding Vuelo.Destination}" MaxLength="20" ></Entry>
+                    </StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontFamily="aero">FLIGHT :</Label>
+                        <Entry Text="{Binding Vuelo.Flight}" WidthRequest="290"  MaxLength="5" ></Entry>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+                        <Label FontFamily="aero">GATE :</Label>
+                        <Entry Keyboard="Numeric" Text="{Binding Vuelo.Gate}"  WidthRequest="305" MaxLength="5"></Entry>
+                    </StackLayout>
+
+                    <Label FontFamily="aero">DATE :</Label>
+                    <DatePicker Date="{Binding ValorFecha}" FontSize="20" ></DatePicker>
+
+
+                    <Label FontFamily="aero">TIME :</Label>
+                    <TimePicker Time="{Binding ValorHora}" FontSize="20"></TimePicker>
+
+
+                </StackLayout>
+
+
+            </Frame>
+            <Frame Grid.Row="4" VerticalOptions="Center" Grid.ColumnSpan="2" BackgroundColor="OrangeRed" Margin="45,0" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AgregarVueloCommand}"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Label TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  FontSize="20" FontFamily="aero">Agendar Vuelo</Label>
+            </Frame>
+            
+            <Frame Grid.Row="5" VerticalOptions="Center" Grid.ColumnSpan="2" BackgroundColor="Black" BorderColor="DarkOrange" Margin="45,0" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CaneclarCommand}"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <Label TextColor="Orange" FontAttributes="Bold" HorizontalTextAlignment="Center" FontFamily="aero2" FontSize="20">Regresar</Label>
+            </Frame>
+
+            <Label Grid.Row="3" HorizontalOptions="Center" 
+                   Grid.ColumnSpan="2" Margin="0,40,0,0" FontAttributes="Italic" 
+                   TextColor="Black" Text="{Binding Errores}"></Label>
+            
+            
+           
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
